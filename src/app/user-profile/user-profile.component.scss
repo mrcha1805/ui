@@ -1,0 +1,298 @@
+// @import "mixins";
+// @import "variables";
+
+@mixin font-format($weight, $size, $height, $hexcolor) {
+  font-family: Noto Sans, sans-serif !important;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $hexcolor;
+  margin: 0;
+}
+.home {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100vh;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+::ng-deep .modal-content {
+  width: 327px;
+  height: 321px;
+  border: 0;
+}
+.card {
+  width: 378px;
+  height: 517px;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 120px;
+  text-align: center;
+  border-radius: 10px;
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+  .logo-header {
+    @include font-format(700, 16px, 25px, #020202);
+    padding: 3px 5px;
+  }
+  .col-header {
+    text-align: right;
+    padding: 0;
+    margin:0;
+    .icon-header {
+      position: static;
+      padding-right: 14px;
+    }
+    .icon-close {
+      position: absolute;
+      right: 30px;
+      top:20px;
+      cursor: pointer;
+    }
+  }
+  .col-boby {
+    position: relative;
+    margin-top: -40px;
+    .icon-upload {
+      width: 90px;
+      height: 90px;
+      cursor: pointer;
+    }
+    .icon-uploaded{
+      width: 90px;
+      height: 90px;
+      cursor: pointer;
+      border-radius: 60px;
+    }
+    .error-content{
+      background: #DA5B49;
+      width: 327px;
+      height: 44.5px;
+      border-radius: 10px;
+      @include font-format(400, 14px, 22px, #FFFFFF);
+      //z-index: 4;
+      position: relative;
+      top: 20px;
+      left: 30px;
+
+
+    }
+    .user-profile-name {
+      margin: 10px 5px;
+      @include font-format(700, 16px, 16px, #020202);
+    }
+    
+    .user-profile-account {
+      @include font-format(400, 12px, 16px, #020202);
+      align-items: center;
+      width: 54%;
+      justify-content: center;
+      display: inline-table;
+    }
+  }
+  .row-bank{
+    margin: 0;
+    .bank-format{
+
+      padding: 15px 15px 15px 25px;
+      @include font-format(700, 16px, 16px, #020202);
+    }
+    .bank-highlight{
+      @include font-format(700, 16px, 16px, #DA5B49);
+    }
+
+   
+  }
+
+  .dropdown-container {
+    margin-left: 35px;
+    padding: 0 0 0 5px;
+    .dropdown-btn {
+      background: #ffffff;
+      border: 1px solid #E6E6E6;
+      border-radius: 10px;padding: 10px 10px 10px 15px;
+      height: 48px;
+      width: 330px;
+      margin-right: 30px;
+      margin-bottom: 0px;
+      cursor: pointer;
+      // img {
+      //   float: right;
+      //   height: 15px;
+      //   width: 15px;
+      //   top: 2px;
+      // }
+      .icon-dropdown {
+        float: right;
+        height: 15px;
+        width: 15px;
+        top: 2px;
+        position: absolute; 
+        left: 85%; 
+        transform: translate(-50%, 100%);
+      }
+      .selected-default{
+        @include font-format(400, 16px, 22px, #E6E6E6);
+      }
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 2em;
+      text-align: left;
+    }
+    .dropdown-error {
+      background: #FFFFFF;
+      border: 1px solid #DA5B49;
+      border-radius: 10px;
+      padding: 10px 10px 10px 15px;
+      height: 48px;
+      width: 330px;
+      margin-right: 30px;
+      margin-bottom: 0px;
+      cursor: pointer;
+      img {
+        float: right;
+        height: 15px;
+        width: 15px;
+        top: 2px;
+      }
+      .selected-default{
+        @include font-format(400, 16px, 22px, #DA5B49);
+      }
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: 2em;
+      text-align: left;
+    }
+    
+  }
+  .field-format{
+    margin: 0;
+    padding: 0px 32px;
+    @include font-format(400, 14px, 22px, #DA5B49);
+  }
+  .row-dropdown-content{
+    width: 330px;
+    height: 200px;
+    margin: 2px 0 0 25px;
+    padding: 0 0 0 5px;
+    background: #FFFFFF;
+    border: 1px solid #E6E6E6;
+    box-shadow: 0px 4px 10px rgba(2, 2, 2, 0.25);
+    border-radius: 10px;
+    display: block;
+    .dropdown-content{
+      .row-search {
+        margin: 0;
+        padding-top: 7px;
+        .input-search {
+          width:90%;
+          margin: 0 0 5px;
+          @include font-format(400, 16px, 22px, #020202);
+          outline: 0;
+          border: 0;
+          padding: 0 0.5em;
+          height: 30px;
+          border-radius: 4px 0;
+        }
+      }
+      .row-item-content {
+        margin: 0;
+        padding-top: 7px;
+       
+        overflow: auto;
+        height: 130px;
+        .row-item:hover {
+          background: #F9FDEA;
+          border-radius: 0px;
+        }
+        .bank-name {
+          @include font-format(400, 13px, 22px, #020202);
+        }
+       
+      }
+    }
+  }
+
+  .img-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .btn-confirm {
+    position: absolute;
+    bottom: 20px;
+    background: #491DC5;
+    border-radius: 100px;
+    width: 181px;
+    height: 40px;
+    @include font-format(400, 16px, 22px, #FFFFFF)
+  }
+}
+
+.modal-body {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 120px;
+  text-align: center;
+  .col-header {
+    text-align: right;
+    padding: 0;
+    margin:0;
+    .icon-header {
+      position: static;
+      padding-right: 14px;
+  
+    }
+    .icon-close {
+      position: absolute;
+      right: 30px;
+      top:20px;
+      cursor: pointer;
+    }
+  }
+  .col-boby {
+    position: relative;
+    margin-top: -40px;
+    .header-modal-label {
+      @include font-format(700, 16px, 25px, #020202);
+    }
+    
+    .description-modal-label {
+      @include font-format(400, 14px, 22px, #676767);
+      align-items: center;
+      width: 54%;
+      justify-content: center;
+      display: inline-table;
+    }
+    
+  }
+  .btn-discard{
+    position: absolute;
+    bottom: 40px;
+    margin: 0;
+    margin-top: 60px;
+    background: #020202;
+    border-radius: 100px;
+    width: 155px;
+    height: 48px;
+    @include font-format(400, 16px, 22px, #C3EB29);
+  }
+}
+
+
+::ng-deep .btn-close:focus {
+  outline: none !important;
+}
+
+::ng-deep .modal-content {
+  margin: 0 auto;
+}

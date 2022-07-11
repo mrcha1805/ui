@@ -1,0 +1,112 @@
+<div class="home" style="background-image: url(./assets/tmp/bg.png);">
+
+  <div class="card">
+    <div class="row">
+      <div class="col-3">
+        <div class="d-flex p-2 flex-row">
+          <img class="logo" src="./assets/tmp/user-profile-icon.svg">
+          <p class="logo-header">Profile</p>
+        </div>
+      </div>
+      <div class="col-9 col-header">
+        <img class="icon-header" src="./assets/tmp/close-user-profile.svg">
+        <img class="icon-close" (click)="close()" src="./assets/tmp/close-icon.svg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-boby">
+
+        <label for="fileInputProfile" style="cursor: pointer;">
+
+          <img *ngIf="!profileInvalid" class="icon-upload" [ngClass]="{'icon-uploaded': profilePrepareUpload}"
+            [src]="profileUrl ? profileUrl: './assets/tmp/profile-upload.svg'">
+          <img *ngIf="profileInvalid" class="icon-upload" src="./assets/tmp/profile-upload-error.svg">
+
+
+        </label>
+
+        <input id="fileInputProfile" type="file" (change)="onProfileChanged($event)" hidden />
+        <div class="error-content" [ngStyle]="{ display: !this.profileInvalid ? 'none' : null }">
+          <p>{{invalidLabel}}</p>
+        </div>
+        <p class="user-profile-name">{{userProfileName}}</p>
+        <p class="user-profile-account">{{accountName}}</p>
+        <!-- <button type="button" class="btn btn-homepage" (click)="close()">{{btnLabel}}</button> -->
+
+      </div>
+    </div>
+    <div class="row row-bank">
+      <p class="bank-format text-start">Bank <span class="bank-highlight">*</span></p>
+    </div>
+    <div class="row">
+      <div class="dropdown-container">
+        <div class="dropdown">
+          <p *ngIf="defaultDropdownSelected === false" class="dropdown-btn" (click)="openDropdown(this.openOption)">
+            <img class="img-icon" style="margin-bottom: 5px;" [src]="bankSelected.icon">
+            <img [src]=" dropdownIconSrc" class="icon-dropdown" />
+            {{bankTextSelected }}
+          </p>
+          <p *ngIf="defaultDropdownSelected"
+            [ngClass]="{'dropdown-error': confirmInvalid, 'dropdown-btn': !confirmInvalid}"
+            (click)="openDropdown(this.openOption)">
+            <img [src]="dropdownIconSrc" class="icon-dropdown" /><span class="selected-default">Please select your
+              Bank</span>
+          </p>
+
+
+        </div>
+      </div>
+    </div>
+    <div *ngIf="confirmInvalid" class="row field-required justify-content-end">
+      <p class="field-format">This field is required.</p>
+    </div>
+    <div class="row row-dropdown-content" [ngStyle]="{ display: this.openOption ? 'none' : null }">
+      <div class="dropdown-content">
+        <div class="col-12" style="padding: 2px 2px">
+          <div class="row row-search">
+            <input type="text" class="input-search" [(ngModel)]="term" placeholder="Search..." />
+            <img src="./assets/tmp/search.svg">
+          </div>
+          <div class="row row-item-content">
+            <div class="col-12">
+              <div class="row row-item" style="align-items: center;" *ngFor="let item of bankData| filter: term"
+                (click)="selectItem(item)">
+                <img class="img-icon" [src]="item.icon">
+                <div class="bank-name p-1">{{item.name}}</div>
+              </div>
+            </div>
+            <!-- <div class="d-flex" style="align-items: center;" *ngFor="let item of bankData| filter: term">
+              <img class="img-icon" [src]="item.icon">
+              <div class="bank-name p-1">{{item.name}}</div>
+            </div> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <button class="btn btn-confirm" (click)="confirm()">Confirm</button>
+    </div>
+  </div>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 col-header" style="text-align: right;">
+        <img class="icon-header" src="./assets/tmp/close-modal.svg">
+        <img class="icon-close" (click)="closeModal()" src="./assets/tmp/close-icon.svg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-boby">
+        <img src="./assets/tmp/discard.svg">
+        <p class="header-modal-label">{{headerModal}}</p>
+        <p class="description-modal-label">{{labelModal}}</p>
+
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <button type="button" class="btn btn-discard" (click)="discard()">{{btnLabel}}</button>
+    </div>
+  </div>
+</ng-template>
